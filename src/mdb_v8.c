@@ -81,7 +81,7 @@ static v8_class_t	*v8_classes;
 static v8_enum_t	v8_types[128];
 static int 		v8_next_type;
 
-static v8_enum_t 	v8_frametypes[16];
+static v8_enum_t 	v8_frametypes[17];
 static int 		v8_next_frametype;
 
 static int		v8_warnings;
@@ -340,8 +340,8 @@ static v8_constant_t v8_constants[] = {
 	{ &V8_ISSHARED_SHIFT,		"v8dbg_isshared_shift",
 	    V8_CONSTANT_FALLBACK(3, 11), 0 },
 	{ &V8_PROP_IDX_FIRST,		"v8dbg_prop_idx_first"		},
-	{ &V8_PROP_TYPE_FIELD,		"v8dbg_prop_type_field"		},
-	{ &V8_PROP_TYPE_MASK,		"v8dbg_prop_type_mask"		},
+	{ &V8_PROP_TYPE_FIELD,		"v8dbg_prop_location_Field"		},
+	{ &V8_PROP_TYPE_MASK,		"v8dbg_prop_location_mask"		},
 	{ &V8_PROP_IDX_CONTENT,		"v8dbg_prop_idx_content",
 	    V8_CONSTANT_OPTIONAL },
 	{ &V8_PROP_DESC_KEY,		"v8dbg_prop_desc_key",
@@ -831,7 +831,7 @@ autoconfigure(v8_cfg_t *cfgp)
 		if (strcmp(ep->v8e_name, "JSFunction") == 0)
 			V8_TYPE_JSFUNCTION = ep->v8e_value;
 
-		if (strcmp(ep->v8e_name, "FixedArray") == 0)
+		if (strcmp(ep->v8e_name, "FixedDoubleArray") == 0)
 			V8_TYPE_FIXEDARRAY = ep->v8e_value;
 
 		if (strcmp(ep->v8e_name, "AccessorInfo") == 0)
